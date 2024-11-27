@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A Tale of Two Travelers</title>
+    <title>Time Princess Journey</title>
     <style>
         body {
             font-family: 'Georgia', serif;
@@ -32,28 +31,100 @@
             font-weight: bold;
             border-radius: 5px;
             transition: background-color 0.3s;
+            cursor: pointer;
         }
         .button:hover {
             background-color: #c07a5a;
+        }
+        .button.no {
+            background-color: #c07a5a;
+        }
+        .slide {
+            display: none;
+        }
+        .slide.active {
+            display: block;
+        }
+        .big-button {
+            font-size: 1.5em;
+            padding: 15px 30px;
+        }
+        .larger-button {
+            font-size: 2em;
+            padding: 20px 40px;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>A Tale of Two Travelers</h1>
-        <p>
-            Once upon a time, in the magical world of <b>Time Princess</b>, two adventurers embarked on parallel journeys. They roamed through enchanting tales, adorned themselves in dazzling attire, and made choices that shaped their stories.
-        </p>
-        <p>
-            Yet, their paths had not yet crossed... until now.
-        </p>
-        <p>
-            A traveler humbly asks: <i>Will you join me in the guild of dreams and adventures?</i>
-        </p>
-        <p>
-            Your answer could begin a story even the stars would remember.
-        </p>
-        <a href="#" class="button">Write Our Story</a>
+        <div id="slide1" class="slide active">
+            <h1>Hi Leo!</h1>
+            <p>
+                I recently started playing <b>Time Princess</b>, and it's been so much fun! But... I feel like I still have a lot to learn.
+            </p>
+            <button class="button" onclick="nextSlide(2)">Yes, I can help!</button>
+            <button class="button no" onclick="shrinkYes()">No, I can't help!</button>
+        </div>
+        <div id="slide2" class="slide">
+            <p>
+                I know you're a pro at the game, and I'd really love some tips! Could you teach me the best strategies for making choices and collecting outfits?
+            </p>
+            <button class="button" onclick="nextSlide(3)">Yes, I can show you!</button>
+            <button class="button no" onclick="shrinkYes()">No, I can't show you!</button>
+        </div>
+        <div id="slide3" class="slide">
+            <p>
+                Oh, and I was wondering... would you mind being friends with me in the game? I think it’d be great to play alongside you.
+            </p>
+            <button class="button" onclick="nextSlide(4)">Yes, let's be friends!</button>
+            <button class="button no" onclick="shrinkYes()">No, let's not!</button>
+        </div>
+        <div id="slide4" class="slide">
+            <p>
+                One more thing... maybe we could join the same guild? It would mean so much to me to team up and share this adventure.
+            </p>
+            <button class="button" onclick="nextSlide(5)">Yes, let's join a guild!</button>
+            <button class="button no" onclick="shrinkYes()">No, I don't want to!</button>
+        </div>
+        <div id="slide5" class="slide">
+            <h2>Looking forward to your reply, Leo!</h2>
+            <p>
+                Thank you for considering this! It’d be amazing to learn and play with you. Let me know what you think!
+            </p>
+        </div>
     </div>
+
+    <script>
+        let yesButton = null;
+        let noButton = null;
+        let noClicks = 0;
+
+        function nextSlide(slideNumber) {
+            const slides = document.querySelectorAll('.slide');
+            slides.forEach(slide => slide.classList.remove('active'));
+            document.getElementById(`slide${slideNumber}`).classList.add('active');
+        }
+
+        function shrinkYes() {
+            noClicks++;
+
+            // Get the current "Yes" and "No" buttons on the current slide
+            yesButton = document.querySelector(".button:not(.no)");
+            noButton = document.querySelector(".button.no");
+
+            if (yesButton) {
+                // Increase the size of the "Yes" button
+                yesButton.classList.add("larger-button");
+            }
+
+            if (noClicks >= 3) {
+                // Hide the "No" button when it has been clicked too many times
+                noButton.style.display = "none";
+            } else {
+                // Make the "Yes" button bigger with each "No" click
+                yesButton.classList.add("big-button");
+            }
+        }
+    </script>
 </body>
 </html>
