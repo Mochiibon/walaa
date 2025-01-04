@@ -3,41 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Time Princess Journey</title>
+    <title>Hey Kyle...</title>
     <style>
+        /* General Styles */
         body {
             font-family: 'Georgia', serif;
-            background-color: #f8f1e7;
-            color: #5a3e36;
+            background: linear-gradient(to bottom, #87CEEB, #4682B4); /* Sky Blue Gradient */
+            color: #fff;
             text-align: center;
             padding: 20px;
+            margin: 0;
         }
         .container {
-            border: 2px solid #deb887;
-            border-radius: 10px;
-            background: #fffdf7;
-            padding: 20px;
+            border: 2px solid #1E90FF;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 30px;
             max-width: 600px;
             margin: 50px auto;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
         }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 1.2em;
+            margin: 15px 0;
+        }
+
+        /* Button Styles */
         .button {
             display: inline-block;
             margin-top: 20px;
-            padding: 10px 20px;
-            background-color: #deb887;
+            padding: 10px 25px;
+            background-color: #1E90FF;
             color: #fff;
             text-decoration: none;
             font-weight: bold;
-            border-radius: 5px;
-            transition: background-color 0.3s;
+            border-radius: 8px;
+            transition: all 0.3s ease;
             cursor: pointer;
         }
         .button:hover {
-            background-color: #c07a5a;
+            background-color: #104E8B;
         }
         .button.no {
-            background-color: #c07a5a;
+            background-color: #FF6F61;
+        }
+        .button.no:hover {
+            background-color: #D9534F;
         }
         .slide {
             display: none;
@@ -57,40 +73,33 @@
 </head>
 <body>
     <div class="container">
+        <!-- Slide 1 -->
         <div id="slide1" class="slide active">
-            <h1>Hi Leo!</h1>
-            <p>
-                I recently started playing <b>Time Princess</b>, and it's been so much fun! But... I feel like I still have a lot to learn.
-            </p>
-            <button class="button" onclick="nextSlide(2)">Yes, I can help!</button>
-            <button class="button no" onclick="shrinkYes()">No, I can't help!</button>
+            <h1>Hey Kyle!</h1>
+            <p>How have you been? It’s been a while since we last talked.</p>
+            <button class="button" onclick="nextSlide(2)">I'm good, tell me more</button>
+            <button class="button no" onclick="shrinkYes()">Let's not talk</button>
         </div>
+
+        <!-- Slide 2 -->
         <div id="slide2" class="slide">
-            <p>
-                I know you're a pro at the game, and I'd really love some tips! Could you teach me the best strategies for making choices and collecting outfits?
-            </p>
-            <button class="button" onclick="nextSlide(3)">Yes, I can show you!</button>
-            <button class="button no" onclick="shrinkYes()">No, I can't show you!</button>
+            <p>You know, I was thinking about the time when I really liked you.</p>
+            <p>Funny how some feelings never really fade, huh?</p>
+            <button class="button" onclick="nextSlide(3)">Go on...</button>
+            <button class="button no" onclick="shrinkYes()">Let’s not go there</button>
         </div>
+
+        <!-- Slide 3 -->
         <div id="slide3" class="slide">
-            <p>
-                Oh, and I was wondering... would you mind being friends with me in the game? I think it’d be great to play alongside you.
-            </p>
-            <button class="button" onclick="nextSlide(4)">Yes, let's be friends!</button>
-            <button class="button no" onclick="shrinkYes()">No, let's not!</button>
+            <p>Do you think there’s still a chance for us?</p>
+            <button class="button" onclick="nextSlide(4)">Yes, I think so</button>
+            <button class="button no" onclick="shrinkYes()">No, I don’t think so</button>
         </div>
+
+        <!-- Slide 4 -->
         <div id="slide4" class="slide">
-            <p>
-                One more thing... maybe we could join the same guild? It would mean so much to me to team up and share this adventure.
-            </p>
-            <button class="button" onclick="nextSlide(5)">Yes, let's join a guild!</button>
-            <button class="button no" onclick="shrinkYes()">No, I don't want to!</button>
-        </div>
-        <div id="slide5" class="slide">
-            <h2>Looking forward to your reply, Leo!</h2>
-            <p>
-                Thank you for considering this! It’d be amazing to learn and play with you. Let me know what you think!
-            </p>
+            <h2>Thank You, Kyle!</h2>
+            <p>Regardless of your answer, I’m glad I asked. Take care!</p>
         </div>
     </div>
 
@@ -108,23 +117,19 @@
         function shrinkYes() {
             noClicks++;
 
-            // Get the current "Yes" and "No" buttons on the current slide
             yesButton = document.querySelector(".button:not(.no)");
             noButton = document.querySelector(".button.no");
 
             if (yesButton) {
-                // Increase the size of the "Yes" button
-                yesButton.classList.add("larger-button");
+                yesButton.classList.add("big-button");
             }
 
             if (noClicks >= 3) {
-                // Hide the "No" button when it has been clicked too many times
                 noButton.style.display = "none";
             } else {
-                // Make the "Yes" button bigger with each "No" click
-                yesButton.classList.add("big-button");
+                yesButton.classList.add("larger-button");
             }
         }
     </script>
 </body>
-</html>
+                                                                          </html>
